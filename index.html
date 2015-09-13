@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-ng-app="app" ng-strict-di>
+<html data-ng-app="app">
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
@@ -22,32 +22,33 @@
   <!-- endinject -->
 </head>
 <body>
-<div>
-  <div data-ng-include="'app/pattern/pattern.html'"></div>
+  <div>
+    <div data-ng-include="'app/pattern/pattern.html'"></div>
+  </div>
 
+  <!-- inject-vendor:js -->
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+  <script src="bower_components/d3/d3.js"></script>
+  <!-- endinject -->
 
-</div>
+  <!-- inject:js -->
+  <!-- Bootstrapping -->
+  <script src="app/app.module.js"></script>
 
-<!-- inject-vendor:js -->
-<script src="bower_components/jquery/dist/jquery.js"></script>
-<script src="bower_components/angular/angular.js"></script>
-<script src="bower_components/angular-route/angular-route.js"></script>
-<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-<!-- endinject -->
+  <!-- core module -->
+  <script src="app/core/core.module.js"></script>
+  <script src="app/core/config.js"></script>
+  <script src="app/core/d3Service.js"></script>
+  <!-- endinject -->
 
-<!-- inject:js -->
-<!-- Bootstrapping -->
-<script src="app/app.module.js"></script>
-
-<!-- core module -->
-<script src="app/core/core.module.js"></script>
-<script src="app/core/config.js"></script>
-<!-- endinject -->
-
-<!-- pattern module -->
-<script src="app/pattern/pattern.module.js"></script>
-<script src="app/pattern/config.route.js"></script>
-<script src="app/pattern/pattern.js"></script>
-<!-- endinject -->
+  <!-- pattern module -->
+  <script src="app/pattern/pattern.module.js"></script>
+  <script src="app/pattern/pattern.directive.js"></script>
+  <script src="app/pattern/config.route.js"></script>
+  <script src="app/pattern/pattern.js"></script>
+  <!-- endinject -->
 </body>
 </html>

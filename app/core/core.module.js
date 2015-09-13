@@ -6,7 +6,7 @@
       /*
        * Angular modules
        */
-      'ngRoute',
+      'ngRoute'
       /*
        * Our reusable modules
        */
