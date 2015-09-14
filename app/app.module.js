@@ -6,7 +6,7 @@
      * everyone will have access to these.
      */
     'app.core',
-    'app.d3',
+    'app.d3Service',
 
     /*
      *features
