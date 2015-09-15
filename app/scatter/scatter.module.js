@@ -1,5 +1,5 @@
 (function (){
   'use strict';
 
-  angular.module('scatter', []);
+  angular.module('app.scatter', []);
 })();

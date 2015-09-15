@@ -1,0 +1,14 @@
+<div ng-controller="MainCtrl">
+<div class="scatter-container">
+  <scatter data="employers" selected-point="selectEmployer"> </scatter>
+</div>
+<div class="detail">
+  <div ng-show="selectEmployer">
+    <h2>{{selectEmployer.name }}</h2>
+    <h3>Employees: {{selectEmployer.value }}M</h3>
+  </div>
+  <div ng-show="!selectEmployer">
+    <h2> [hover over a company] </h2>
+  </div>
+</div>
+</div>
