@@ -7,9 +7,9 @@
 
   function config($routeProvider){
     $routeProvider
-      .when('/pattern',{
-        templateUrl: 'pattern.html',
-        controller: 'Pattern',
+      .when('/bars',{
+        templateUrl: 'bars.html',
+        controller: 'Bars',
         controllerAs: 'vm'
       });
   }

@@ -6,10 +6,11 @@
       /*
        * Angular modules
        */
-      'ngRoute'
+      'ngRoute',
       /*
        * Our reusable modules
        */
+      'app.d3Service'
 
       /*
        *3rd party modules

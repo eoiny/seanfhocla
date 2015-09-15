@@ -2,12 +2,12 @@
   'use strict';
 
   angular
-    .module('app.pattern')
-    .directive('sfPattern',sfPattern);
+    .module('app.bars')
+    .directive('barChart',barChart);
 
-  sfPattern.$inject = ['$window', '$timeout','d3Service'];
+  barChart.$inject = ['$window', '$timeout','d3Service'];
 
-  function sfPattern($window, $timeout ,d3Service) {
+  function barChart($window, $timeout ,d3Service) {
     return {
       restrict: 'EA',
       scope: {},

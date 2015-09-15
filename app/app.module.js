@@ -11,7 +11,8 @@
     /*
      *features
      */
-    'app.pattern'
+    'app.bars',
+    'app.scatter'
   ]);
 
   

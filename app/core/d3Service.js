@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('app.d3Service')
+    .module('app.core')
     .factory('d3Service', d3Service);
 
   d3Service.$inject = ['$document', '$q', '$rootScope'];
