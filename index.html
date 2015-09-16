@@ -23,7 +23,14 @@
 </head>
 <body>
   <div>
-    <div data-ng-include="'app/bars/bars.html'"></div>
+
+    <div data-ng-include="'app/scatter/scatter.html'"></div>
+    <div ng-view=""></div>
+
+    <div>
+      <div data-ng-include="'app/bars/bars.html'"></div>
+    </div>
+
   </div>
 
   <!-- inject-vendor:js -->

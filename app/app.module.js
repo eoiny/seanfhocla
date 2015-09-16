@@ -7,6 +7,7 @@
      */
     'app.core',
     'app.d3Service',
+    'ngRoute',
 
     /*
      *features

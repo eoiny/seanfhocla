@@ -28,3 +28,22 @@
   content: "";
   padding: 0;
 }
+
+/* D3 for line (tagged as scatter)*/
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.x.axis path {
+  display: none;
+}
+
+.line {
+  fill: none;
+  stroke: steelblue;
+  stroke-width: 1.5px;
+}

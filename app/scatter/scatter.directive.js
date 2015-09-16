@@ -11,75 +11,85 @@
     return {
       restrict: 'EA',
       scope: {},
-      link: function (scope, ele, attrs) {
+      link: function (scope, element, attrs) {
         d3Service.d3().then(function (d3) {
-          var margin = parseInt(attrs.margin) || 20,
-            barHeight = parseInt(attrs.barHeight) || 20,
-            barPadding = parseInt(attrs.barPadding) || 5;
 
-          var svg = d3.select(ele[0])
-            .append('svg')
-            .style('width', '100%');
+          var margin = {top: 20, right: 20, bottom: 30, left: 50},
+            width = 600 - margin.left - margin.right,
+            height = 700 - margin.top - margin.bottom;
 
-          // Browser onresize event
-          window.onresize = function () {
-            scope.$apply();
-          };
+          var parseDate = d3.time.format('%d-%b-%y').parse;
 
-          // hard-code data
+          var x = d3.time.scale()
+            .range([0, width]);
+
+          var y = d3.scale.linear()
+            .range([height, 0]);
+
+          var xAxis = d3.svg.axis()
+            .scale(x)
+            .orient('bottom');
+
+          var yAxis = d3.svg.axis()
+            .scale(y)
+            .orient('left');
+
+          var line = d3.svg.line()
+            .x(function (d) {
+              return x(d.date);
+            })
+            .y(function (d) {
+              return y(d.close);
+            });
+
+          var svg = d3.select(element[0]).append('svg')
+            .attr('width', width + margin.left + margin.right)
+            .attr('height', height + margin.top + margin.bottom)
+            .append('g')
+            .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
+
+          // Hard coded data
           scope.data = [
-            {name: "Greg", score: 98},
-            {name: "Ari", score: 96},
-            {name: 'Q', score: 75},
-            {name: "Loser", score: 48}
+            {date: '4-Apr-12', close: 34},
+            {date: '5-Apr-12', close: 45},
+            {date: '6-Apr-12', close: 37},
+            {date: '7-Apr-12', close: 56},
+            {date: '8-Apr-12', close: 50},
+            {date: '9-Apr-12', close: 77}
           ];
 
-          // Watch for resize event
-          scope.$watch(function () {
-            return angular.element($window)[0].innerWidth;
-          }, function () {
-            scope.render(scope.data);
+          scope.data.forEach(function (d) {
+            d.date = parseDate(d.date);
+            d.close = +d.close;
           });
 
-          scope.render = function (data) {
-            svg.selectAll('*').remove();
+          x.domain(d3.extent(scope.data, function (d) {
+            return d.date;
+          }));
+          y.domain(d3.extent(scope.data, function (d) {
+            return d.close;
+          }));
 
-            // If we don't pass any data, return out of the element
-            if (!data) return;
+          svg.append('g')
+            .attr('class', 'x axis')
+            .attr('transform', 'translate(0,' + height + ')')
+            .call(xAxis);
 
-            // setup variables
-            var width = d3.select(ele[0]).node().offsetWidth - margin,
-            // calculate the height
-              height = scope.data.length * (barHeight + barPadding),
-            // Use the category20() scale function for multicolor support
-              color = d3.scale.category20(),
-            // our xScale
-              xScale = d3.scale.linear()
-                .domain([0, d3.max(data, function(d) {
-                  return d.score;
-                })])
-                .range([0, width]);
+          svg.append('g')
+            .attr('class', 'y axis')
+            .call(yAxis)
+            .append('text')
+            .attr('transform', 'rotate(-90)')
+            .attr('y', 6)
+            .attr('dy', '.71em')
+            .style('text-anchor', 'end')
+            .text('Price ($)');
 
-            // set the height based on the calculations above
-            svg.attr('height', height);
+          svg.append('path')
+            .datum(scope.data)
+            .attr('class', 'line')
+            .attr('d', line);
 
-            //create the rectangles for the bar chart
-            svg.selectAll('rect')
-              .data(data).enter()
-              .append('rect')
-              .attr('height', barHeight)
-              .attr('width', 140)
-              .attr('x', Math.round(margin/2))
-              .attr('y', function(d,i) {
-                return i * (barHeight + barPadding);
-              })
-              .attr('fill', function(d) { return color(d.score); })
-              .transition()
-              .duration(1000)
-              .attr('width', function(d) {
-                return xScale(d.score);
-              });
-          };
         });
       }
     };
