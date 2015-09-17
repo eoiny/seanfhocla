@@ -2,17 +2,16 @@
   'use strict';
 
   angular
-    .module('app')
+    .module('app.bars')
     .config(config);
 
   function config($routeProvider){
     $routeProvider
       .when('/bars',{
-        templateUrl: 'bars.html',
-        controller: 'Bars',
-        controllerAs: 'vm'
+        templateUrl: 'app/bars/bars.html'
+       // controller: 'bars',
+       // controllerAs: 'vm'
       });
   }
 
-
-})
+})();
