@@ -24,6 +24,8 @@
 
           $scope.apply();
         });*/
+        var parseDate = d3.time.format("%d-%b-%y").parse;
+
         $scope.data2 = [
           {"date": "4-Apr-12", "close": 34},
           {"date": "5-Apr-12", "close": 45},
@@ -32,6 +34,13 @@
           {"date": "8-Apr-12", "close": 50},
           {"date": "9-Apr-12", "close": 77}
         ];
+
+        $scope.data2.forEach(function (d) {
+          console.log(d);
+          d.date = parseDate(d.date);
+          d.close = +d.close;
+        });
+
       });
     }
 })();

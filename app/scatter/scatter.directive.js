@@ -20,6 +20,7 @@
             width = 600 - margin.left - margin.right,
             height = 700 - margin.top - margin.bottom;
 
+         // var parseDate = d3.time.format("%d-%b-%y").parse;
           var parseDate = d3.time.format("%d-%b-%y").parse;
 
           var x = d3.time.scale()
@@ -53,11 +54,11 @@
 
           scope.$watch('data', function(data){
 
-            scope.data.forEach(function (d) {
+           /* scope.data.forEach(function (d) {
               console.log(d);
               d.date = parseDate(d.date);
               d.close = +d.close;
-            });
+            });*/
 
             //console.log(scope.data);
             x.domain(d3.extent(scope.data, function (d) {
