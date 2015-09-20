@@ -50,17 +50,57 @@
             .attr('height', height + margin.top + margin.bottom)
             .append('g')
             .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
+         // console.log(scope.data);
+
+          //*****
+          scope.render = function (data){
+            if (data === undefined) {
+              return ;
+            }
+
+            x.domain(d3.extent(data, function (d) {
+              return d.date;
+            }));
+            y.domain(d3.extent(data, function (d) {
+              return d.close;
+            }));
+
+            svg.append('g')
+              .attr('class', 'x axis')
+              .attr('transform', 'translate(0,' + height + ')')
+              .call(xAxis);
+
+            svg.append('g')
+              .attr('class', 'y axis')
+              .call(yAxis)
+              .append('text')
+              .attr('transform', 'rotate(-90)')
+              .attr('y', 6)
+              .attr('dy', '.71em')
+              .style('text-anchor', 'end')
+              .text('Price ($)');
+
+            svg.append('path')
+              .datum(data)
+              .attr('class', 'line')
+              .attr('d', line);
+
+            console.log(data);
+
+          };
 
 
-          scope.$watch('data', function(data){
+
+          scope.$watch('data', function(){
+            scope.render(scope.data);
 
            /* scope.data.forEach(function (d) {
               console.log(d);
               d.date = parseDate(d.date);
               d.close = +d.close;
-            });*/
+            });
 
-            //console.log(scope.data);
+           console.log(data);
             x.domain(d3.extent(scope.data, function (d) {
               return d.date;
             }));
@@ -86,7 +126,7 @@
             svg.append('path')
               .datum(scope.data)
               .attr('class', 'line')
-              .attr('d', line);
+              .attr('d', line);*/
 
           }, true);
 
