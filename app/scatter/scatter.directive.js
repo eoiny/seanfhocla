@@ -42,7 +42,7 @@
             svg.selectAll('*').remove();
 
             // If we don't pass any data, return out of the element
-            if (!data) return;
+            if (!data) {return;}
 
             var width = d3.select(element[0])[0][0].offsetWidth - margin.left - margin.right,
               height = 400 - margin.top - margin.bottom;
@@ -111,7 +111,7 @@
               .attr('class', 'line')
               .attr('d', line);
 
-            console.log(data);
+            //console.log(data);
 
           };
 
