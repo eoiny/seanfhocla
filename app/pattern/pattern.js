@@ -16,7 +16,6 @@
 
         $scope.data = data;
         $scope.$apply();
-
       });
     });
   }
