@@ -38,10 +38,12 @@
 
           //*****
           scope.render = function (data){
-            //svg.selectAll('*').remove();
+            svg.selectAll('*').remove();
 
             // If we don't pass any data, return out of the element
             if (!data) {return;}
+
+            console.log(data[1].proverb);
 
             var width = d3.select(element[0])[0][0].offsetWidth - margin.left - margin.right,
               height = 600 - margin.top - margin.bottom;
@@ -69,13 +71,17 @@
 
             d3.select('.proverb').remove();
 
+            //pick a random proverb
+            var rndProverb = data[Math.floor(Math.random() * data.length)].proverb;
+            console.log(rndProverb);
+
             var proverb = g.append('g').attr('class','proverb')
               .append("text")
               .attr("x", width/2)
               .attr("y", height/2)
               .attr("dy", ".35em")
               .style("text-anchor", "middle")
-              .text("Aimsirgggggsajkhgjkfskjfsdzjgfadksjh")
+              .text(rndProverb)
               .call(wrap,500);
 
             var bbox = proverb.node().getBBox();
