@@ -14,7 +14,8 @@
      */
     'app.bars',
     'app.scatter',
-    'app.pattern'
+    'app.pattern',
+    'app.typeahead'
   ]);
 
   
