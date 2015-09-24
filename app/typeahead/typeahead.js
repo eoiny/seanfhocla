@@ -2,7 +2,7 @@
   "use strict";
 
   angular
-    .module('typeahead.app')
+    .module('app.typeahead')
     .controller('typeahead', typeahead);
 
   typeahead.$inject = ['$scope', 'd3Service'];

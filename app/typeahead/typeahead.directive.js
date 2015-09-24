@@ -35,7 +35,7 @@
         scope.setCurrent=function(index){
           scope.current=index;
         };
-      },
+      }
       //templateUrl: 'typeahead.html'
     };
     }
