@@ -13,8 +13,8 @@
         scope: {
         items: '=',
         prompt:'@',
-        title: '@',
-        subtitle:'@',
+        item: '@',
+        //subtitle:'@',
         model: '=',
         onSelect:'&'
       },
@@ -39,7 +39,4 @@
       //templateUrl: 'typeahead.html'
     };
     }
-
-
-
 })();
