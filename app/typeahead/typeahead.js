@@ -10,7 +10,7 @@
 
   function typeahead($scope, d3Service) {
     d3Service.d3().then(function (d3) {
-      d3.json('app/content/data.json', function (err, data) {
+      d3.json('app/content/subjects.json', function (err, data) {
         if (err) {
           throw err;
         }

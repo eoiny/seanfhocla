@@ -1,7 +1,7 @@
 <typeahead  options="datas"
                place-holder="Search options..."
                on-select="onSelect"
-               display-property="title"
+               display-property="subject"
                input-class="form-control"
                clear-input="false"></typeahead>
 
@@ -9,4 +9,4 @@
 
 <input type="button" ng-click="clearInput()" value="Clear input" class="btn btn-default" />
 
-<p>{{selectedData.name}}</p>
+<p>{{selectedData.subject}}</p>
