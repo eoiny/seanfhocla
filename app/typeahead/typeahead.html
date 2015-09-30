@@ -1,6 +1,12 @@
-<input type="text" ng-model="model" placeholder="{{prompt}}" ng-keydown="selected=false"/><br/>
-<div class="items" ng-hide="!model.length || selected">
-  <div class="item" ng-repeat="item in items | filter:model  track by $index" ng-click="handleSelection(item)" style="cursor:pointer" ng-class="{active:isCurrent($index)}" ng-mouseenter="setCurrent($index)">
-    <p class="title">{{item}}</p>
-  </div>
-</div>
+<typeahead  options="datas"
+               place-holder="Search options..."
+               on-select="onSelect"
+               display-property="title"
+               input-class="form-control"
+               clear-input="false"></typeahead>
+
+<p>More content</p>
+
+<input type="button" ng-click="clearInput()" value="Clear input" class="btn btn-default" />
+
+<p>{{selectedData.name}}</p>
